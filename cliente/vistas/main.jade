@@ -1,0 +1,89 @@
+//-- This is the app index
+doctype html
+html(
+	ng-app="app"
+	dir="ltr"
+)
+	head
+		meta(
+			http-equiv="content-type"
+			content="text/html; charset=UTF-8"
+		)
+		meta(
+			name="viewport"
+			content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
+		)
+		meta(
+			name="theme-color"
+			content="#305"
+		)
+		link(
+			type="text/css"
+			rel="stylesheet"
+			href="main.css"
+		)
+		if debug
+			//- For dev only
+			script(src="http://localhost:35729/livereload.js")
+
+
+		else
+			script(src="app.js")
+		title title
+
+	body
+		div(
+			ng-controller="nav"
+		)
+			include views/navegacion/header
+			include views/navegacion/menu
+			include views/navegacion/footer
+		article(ng-view)
+			//-
+				button#btn-pntll-cmplt1.hidden
+					include views/icons/normalScreen.svg
+
+		include views/inicio
+		include views/listadoPrincipal
+		include views/descripcion
+		include views/extras/ayuda
+		include views/extras/acercaDe
+		include views/extras/configuracion
+		include views/screens
+
+		if debug
+			script(src="js/angular.min.js")
+			script(src="js/angular-route.min.js")
+			script(src="js/angular-animate.min.js")
+			script(src="js/hammer.js")
+
+			//- App
+			script(src="js/app.js")
+			script(src="js/ng-service/persistencia.js")
+			script(src="js/ng-service/conexion.js")
+			script(src="js/ng-service/visor.js")
+
+			script(src="js/ng-service/modelo/modelo.js")
+			script(src="js/ng-service/modelo/minicio.js")
+			script(src="js/ng-service/modelo/mlistadoPrincipal.js")
+			script(src="js/ng-service/modelo/mdescripcion.js")
+			script(src="js/ng-service/modelo/mcapitulo.js")
+			script(src="js/ng-service/modelo/mextras.js")
+
+			script(src="js/ng-control/vnavegacion.js")
+			script(src="js/ng-control/vinicio.js")
+			script(src="js/ng-control/vlistadoPrincipal.js")
+			script(src="js/ng-control/vdescripcion.js")
+			script(src="js/ng-control/vextras.js")
+
+			//-
+				script(src="js/utiles.js")
+				script(src="js/modelo/Persistencia.js")
+				script(src="js/modelo/Comunicacion.js")
+				script(src="js/modelo/Modelo.js")
+				script(src="js/control/Control.js")
+				script(src="js/vista/Vista.js")
+				script(src="js/vista/Pantalla.js")
+				script(src="js/vista/Pantalla/Orientacion.js")
+				script(src="js/vista/Visor.js")
+				script(src="js/vista/Eventos.js")

@@ -1,0 +1,37 @@
+{
+	"name": "co.edu.unal.LenguajesDeProgramación-Preguntados",
+	"version": "0.0.1",
+	"description": "Un app como preguntados y quién quiere ser millonario con la tematica del curso",
+	"homepage": "",
+	"author": "DFOXpro",
+	"license": "none",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DFOXpro/co.edu.unal.LDP-Preguntados.git"
+	},
+	"keywords": [
+		"html5",
+		"app",
+		"mobil",
+		"cordova",
+		"firefoxos",
+		"android",
+		"windowsmobil",
+		"educational",
+		"computer",
+		"cience",
+	],
+	"bugs": {
+		"url": "https://github.com/DFOXpro/co.edu.unal.LDP-Preguntados/issues"
+	},
+	"dependencies": {
+		"grunt": "latest",
+		"bower": "latest",
+		"grunt-contrib-stylus": "latest",
+		"grunt-contrib-watch": "latest",
+		"grunt-contrib-jade": "latest",
+		"load-grunt-tasks": "latest",
+		"grunt-contrib-copy": "~0.7.0",
+		"grunt-contrib-clean": "^0.6.0"
+	}
+}
