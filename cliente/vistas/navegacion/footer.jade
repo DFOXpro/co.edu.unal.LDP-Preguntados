@@ -1,0 +1,66 @@
+footer(
+	ng-class="{ 'opaco' : footer.B_mensage }"
+)
+	button#btn-cargarListado(
+		ng-class="{ 'activo' : progreso.mostrar }"
+		ng-click="footer.F_actualizar()"
+		ng-show="footer.B_btn_recargar"
+		data-icon="reload"
+	)
+
+	//Visor nav
+	#btns-visor-nav.btns-list(
+		ng-show="footer.B_btns_visor_nav"
+	)
+		button#btn-navAnt(
+			data-icon='arrow-back'
+		)
+		button#btn-navPos(
+			data-icon='data'
+		)
+		button#btn-navSig(
+			data-icon='arrow-forward'
+		)
+		button#btn-rotar(
+			data-icon='toggle-camera-front'
+		)
+
+	//Chapters list order
+	#btns-orden.btns-list(
+		ng-show="footer.B_btns_orden"
+	)
+		button#btn-orden-Mam(
+			ng-class="{ 'activo' : footer.B_orden }"
+		)
+			include ../icons/invertOrder.svg
+		button#btn-orden-maM(
+			ng-class="{ 'activo' : !footer.B_orden }"
+		)
+			include ../icons/normalOrder.svg
+
+	//Mangas list type
+	#btns-mostarMangas.btns-list.right(
+		ng-show="footer.B_btns_mostrarMangas"
+	)
+		button#btn-listaGrid(
+			ng-click="footer.F_cambiarModoLista(false)"
+			ng-class="{ 'activo' : !footer.B_grid }"
+		)
+			include ../icons/grid.svg
+		button#btn-listaTabla(
+			ng-click="footer.F_cambiarModoLista(true)"
+			ng-class="{ 'activo' : footer.B_grid }"
+		)
+			include ../icons/list.svg
+
+	// Warning button
+	button#btn-alerta.activo.centrado(
+		ng-show="footer.B_mensage"
+		data-icon="exclamation"
+	)
+
+section(
+	role="status"
+	ng-show="footer.B_mensage"
+)
+	p {{footer.S_mensage}}

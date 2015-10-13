@@ -1,0 +1,41 @@
+header
+	button#menu.left(
+		ng-show="header.B_menu"
+		data-icon="menu"
+		ng-click="menu.B_mostrar = !menu.B_mostrar"
+		ng-class="{ 'activo' : menu.B_mostrar }"
+	)
+	button#atras.left(
+		ng-show="header.B_atras"
+		data-icon='back'
+		ng-click="header.F_atras()"
+	)
+
+	#titulo(
+		ng-hide="header.B_buscar"
+	) {{header.S_titulo}}
+	input#ipt-buscar(
+		type="text"
+		ng-show="header.B_buscar"
+		ng-model="header.S_ipt_Buscar"
+		ng-change="header.F_buscarDebounce()"
+		ng-model-options="{ debounce: 600 }"
+		placeholder="Naruto"
+	)
+
+	button#btn-buscar.right(
+		ng-click="header.F_buscar()"
+		ng-class="{ 'activo' : header.B_buscar }"
+		ng-show="header.B_btn_buscar"
+		data-icon='search'
+	)
+	button#btn-pntll-cmplt.right(
+		ng-show="header.B_btn_pantallaCompleta"
+	)
+		include ../icons/fullScreen.svg
+progress(
+	ng-show="progreso.B_mostrar"
+	value="{{progreso.N_valor}}"
+	max="100"
+	ng-class="{ 'pack-activity' : progreso.N_valor == -1 }"
+)

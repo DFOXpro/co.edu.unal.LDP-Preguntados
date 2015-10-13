@@ -35,55 +35,28 @@ html(
 		div(
 			ng-controller="nav"
 		)
-			include views/navegacion/header
-			include views/navegacion/menu
-			include views/navegacion/footer
+			include navegacion/header
+			include navegacion/menu
+			include navegacion/footer
 		article(ng-view)
-			//-
-				button#btn-pntll-cmplt1.hidden
-					include views/icons/normalScreen.svg
-
-		include views/inicio
-		include views/listadoPrincipal
-		include views/descripcion
-		include views/extras/ayuda
-		include views/extras/acercaDe
-		include views/extras/configuracion
-		include views/screens
+		include inicio
+		include principal
+		include extras/acercaDe
 
 		if debug
-			script(src="js/angular.min.js")
-			script(src="js/angular-route.min.js")
-			script(src="js/angular-animate.min.js")
-			script(src="js/hammer.js")
+			script(src="lib/angular.js")
+			script(src="lib/angular-route.js")
+			script(src="lib/angular-animate.js")
+			script(src="lib/hammer.js")
 
 			//- App
-			script(src="js/app.js")
-			script(src="js/ng-service/persistencia.js")
-			script(src="js/ng-service/conexion.js")
-			script(src="js/ng-service/visor.js")
+			script(src="logica/app.js")
+			script(src="logica/debug.js")
+			script(src="logica/dao/persistencia.js")
+			script(src="logica/dao/conexion.js")
 
-			script(src="js/ng-service/modelo/modelo.js")
-			script(src="js/ng-service/modelo/minicio.js")
-			script(src="js/ng-service/modelo/mlistadoPrincipal.js")
-			script(src="js/ng-service/modelo/mdescripcion.js")
-			script(src="js/ng-service/modelo/mcapitulo.js")
-			script(src="js/ng-service/modelo/mextras.js")
+			script(src="logica/ng-service/control/control.js")
+			script(src="logica/ng-service/control/cinicio.js")
 
-			script(src="js/ng-control/vnavegacion.js")
-			script(src="js/ng-control/vinicio.js")
-			script(src="js/ng-control/vlistadoPrincipal.js")
-			script(src="js/ng-control/vdescripcion.js")
-			script(src="js/ng-control/vextras.js")
-
-			//-
-				script(src="js/utiles.js")
-				script(src="js/modelo/Persistencia.js")
-				script(src="js/modelo/Comunicacion.js")
-				script(src="js/modelo/Modelo.js")
-				script(src="js/control/Control.js")
-				script(src="js/vista/Vista.js")
-				script(src="js/vista/Pantalla.js")
-				script(src="js/vista/Pantalla/Orientacion.js")
-				script(src="js/vista/Visor.js")
-				script(src="js/vista/Eventos.js")
+			script(src="logica/vista/vnavegacion.js")
+			script(src="logica/vista/vinicio.js")

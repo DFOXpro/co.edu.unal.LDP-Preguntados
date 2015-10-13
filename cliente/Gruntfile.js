@@ -57,19 +57,17 @@ module.exports = function(grunt) {
 						'angular-animate/angular-animate.min.js',
 						'hammerjs/hammer.js'
 					],
-					dest: 'build/js/',
+					dest: 'build/libs/',
 				},
 				devSrc: {
 					expand: true,
-					cwd: 'src/js/',
+					cwd: 'src/logica/',
 					src: '**',
-					dest: 'build/js/',
+					dest: 'build/logica/',
 				},
 				devManifest: {
-					expand: true,
-					cwd: 'src/',
 					src: 'manifest.webapp',
-					dest: 'build/',
+					dest: 'build/'
 				}
 			},
 
@@ -82,8 +80,7 @@ module.exports = function(grunt) {
 						}
 					},
 					files: {
-						"build/decoy.html": 'src/decoy.jade',
-						"build/index.html": 'src/main.jade'
+						"build/index.html": 'vistas/main.jade'
 					}
 				},
 				prod: {
@@ -94,8 +91,7 @@ module.exports = function(grunt) {
 						}
 					},
 					files: {
-						"build/index.html": 'src/decoy.jade',//decoy
-						"build/index.html~": 'src/main.jade'//real app
+						"dist/index.html": 'vistas/main.jade'
 					}
 				}
 			},
@@ -107,30 +103,37 @@ module.exports = function(grunt) {
 						'include css': true
 					},
 					files: {
-						'build/main.css': 'src/css/main.styl',
-						'build/decoy.css': 'src/css/decoy.styl',
-					//'path/to/another.css': ['path/to/sources/*.styl', 'path/to/more/*.styl'] // compile and concat into single file
+						'build/main.css': 'estilos/main.styl'
+					}
+				},
+				prod: {
+					options: {
+						compress: true,
+						'include css': true
+					},
+					files: {
+						'dist/main.css': 'estilos/main.styl'
 					}
 				}
 			},
 
 			watch: {
 				views: {
-					files: ['src/views/**/*.jade','src/views/**/*.svg'],
+					files: ['vistas/**/*.jade','imagenes/**/*.svg'],
 					tasks: ['jade:dev'],
 					options: {
 						livereload: true
 					}
 				},
 				css: {
-					files: 'src/css/*.styl',
+					files: 'estilos/**/*.styl',
 					tasks: ['stylus:dev'],
 					options: {
 						livereload: true
 					}
 				},
 				js: {
-					files: 'src/js/**/*.js',
+					files: 'logica/**/*.js',
 					tasks: ['copy:devSrc'],
 					options: {
 						livereload: true
@@ -142,18 +145,16 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	grunt.registerTask(
-		'dev', [
-			'copy',
-			'stylus:dev',
-			'jade:dev',
-			'watch'
-		]
-	);
-	grunt.registerTask(
 		'build', [
 			'copy',
 			'stylus:dev',
 			'jade:dev'
+		]
+	);
+	grunt.registerTask(
+		'dev', [
+			'build',
+			'watch'
 		]
 	);
 	grunt.registerTask('default', 'dev');

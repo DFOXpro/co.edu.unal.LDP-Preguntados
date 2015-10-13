@@ -1,5 +1,5 @@
 {
-	"name": "co.edu.unal.LenguajesDeProgramación-Preguntados",
+	"name": "co.edu.unal.LenguajesDeProgramacion-Preguntados",
 	"version": "0.0.1",
 	"description": "Un app como preguntados y quién quiere ser millonario con la tematica del curso",
 	"homepage": "",
@@ -19,7 +19,7 @@
 		"windowsmobil",
 		"educational",
 		"computer",
-		"cience",
+		"cience"
 	],
 	"bugs": {
 		"url": "https://github.com/DFOXpro/co.edu.unal.LDP-Preguntados/issues"
