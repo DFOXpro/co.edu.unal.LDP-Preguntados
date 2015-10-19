@@ -26,7 +26,6 @@ html(
 			//- For dev only
 			script(src="http://localhost:35729/livereload.js")
 
-
 		else
 			script(src="app.js")
 		title title
@@ -37,26 +36,19 @@ html(
 		)
 			include navegacion/header
 			include navegacion/menu
-			include navegacion/footer
 		article(ng-view)
+
 		include inicio
-		include principal
-		include extras/acercaDe
+		script#w1(
+			type="javascript/worker"
+		)
+			include ../logica/control/cinicio.js
 
-		if debug
-			script(src="lib/angular.js")
-			script(src="lib/angular-route.js")
-			script(src="lib/angular-animate.js")
-			script(src="lib/hammer.js")
+	if debug
+		script(src="js/libs/angular.js")
+		script(src="js/libs/angular-route.js")
+		script(src="js/libs/angular-animate.js")
 
-			//- App
-			script(src="logica/app.js")
-			script(src="logica/debug.js")
-			script(src="logica/dao/persistencia.js")
-			script(src="logica/dao/conexion.js")
-
-			script(src="logica/ng-service/control/control.js")
-			script(src="logica/ng-service/control/cinicio.js")
-
-			script(src="logica/vista/vnavegacion.js")
-			script(src="logica/vista/vinicio.js")
+		script(src="js/app.js")
+		script(src="js/vista/vnavegacion.js")
+		script(src="js/vista/vinicio.js")

@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 			pkg: grunt.file.readJSON('package.json'),
-			clean:["build"],
+			clean:["www/*"],
 			copy: {
 				fonts: {
 					expand: true,
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 						'FiraSans-Regular.woff',
 						'FiraSans-Medium.woff'
 					],
-					dest: 'build/fonts/',
+					dest: 'www/fonts/'
 				},
 				extraCSS: {
 					expand: true,
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 					src: [
 						'status/images/ui/*'
 					],
-					dest: 'build/status/images/ui/',
+					dest: 'www/status/images/ui/'
 				},
 				icons: {
 					expand: true,
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 					flatten: true,
 					cwd: 'bower_components/gaia-icons/',
 					src: ['fonts/gaia-icons.ttf','gaia-icons.js'],
-					dest: 'build/fonts/',
+					dest: 'www/fonts/'
 				},
 				img: {
 					expand: true,
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
 					src: [
 						'*.png'
 					],
-					dest: 'build/img/',
+					dest: 'www/img/'
 				},
 				devLib: {
 					expand: true,
@@ -52,22 +52,26 @@ module.exports = function(grunt) {
 					flatten: true,
 					cwd: './bower_components/',
 					src: [
-						'angular/angular.min.js',
-						'angular-route/angular-route.min.js',
-						'angular-animate/angular-animate.min.js',
+						'angular/angular.js',
+						'angular-route/angular-route.js',
+						'angular-animate/angular-animate.js',
 						'hammerjs/hammer.js'
 					],
-					dest: 'build/libs/',
+					dest: 'www/js/libs/'
 				},
 				devSrc: {
 					expand: true,
 					cwd: 'src/logica/',
 					src: '**',
-					dest: 'build/logica/',
+					dest: 'www/js/'
 				},
 				devManifest: {
 					src: 'manifest.webapp',
-					dest: 'build/'
+					dest: 'www/'
+				},
+				datos: {
+					src: '../preguntas.js',
+					dest: 'www/'
 				}
 			},
 
@@ -80,7 +84,7 @@ module.exports = function(grunt) {
 						}
 					},
 					files: {
-						"build/index.html": 'vistas/main.jade'
+						"www/index.html": 'src/vistas/main.jade'
 					}
 				},
 				prod: {
@@ -91,7 +95,7 @@ module.exports = function(grunt) {
 						}
 					},
 					files: {
-						"dist/index.html": 'vistas/main.jade'
+						"dist/index.html": 'src/vistas/main.jade'
 					}
 				}
 			},
@@ -103,7 +107,7 @@ module.exports = function(grunt) {
 						'include css': true
 					},
 					files: {
-						'build/main.css': 'estilos/main.styl'
+						'www/main.css': 'src/estilos/main.styl'
 					}
 				},
 				prod: {
@@ -112,28 +116,28 @@ module.exports = function(grunt) {
 						'include css': true
 					},
 					files: {
-						'dist/main.css': 'estilos/main.styl'
+						'dist/main.css': 'src/estilos/main.styl'
 					}
 				}
 			},
 
 			watch: {
 				views: {
-					files: ['vistas/**/*.jade','imagenes/**/*.svg'],
+					files: ['src/vistas/**/*.jade','src/imagenes/**/*.svg'],
 					tasks: ['jade:dev'],
 					options: {
 						livereload: true
 					}
 				},
 				css: {
-					files: 'estilos/**/*.styl',
+					files: 'src/estilos/**/*.styl',
 					tasks: ['stylus:dev'],
 					options: {
 						livereload: true
 					}
 				},
 				js: {
-					files: 'logica/**/*.js',
+					files: 'src/logica/**/*.js',
 					tasks: ['copy:devSrc'],
 					options: {
 						livereload: true

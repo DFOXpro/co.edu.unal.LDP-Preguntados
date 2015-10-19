@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="app" dir="ltr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#305">
+    <link type="text/css" rel="stylesheet" href="main.css">
+    <script src="http://localhost:35729/livereload.js"></script>
+    <title>title</title>
+  </head>
+  <body>
+    <div ng-controller="nav">
+      <header>
+        <button id="menu" ng-show="header.B_menu" data-icon="menu" ng-click="menu.B_mostrar = !menu.B_mostrar" ng-class="{ 'activo' : menu.B_mostrar }" class="left ng-hide"></button>
+        <button id="atras" ng-show="header.B_atras" data-icon="back" ng-click="header.F_atras()" class="left ng-hide"></button>
+        <div id="titulo" ng-hide="header.B_buscar">{{header.S_titulo}}</div>
+      </header>
+      <progress ng-show="progreso.B_mostrar" value="{{progreso.N_valor}}" max="100" ng-class="{ 'pack-activity' : progreso.N_valor == -1 }"></progress>
+      <menu ng-show="menu.B_mostrar" class="ng-hide">
+        <!-- h2 Short by-->
+        <ul>
+          <li ng-click="menu.F_cambiarOrden(0)" ng-class="{ 'activo' : menu.N_orden == 0 }"><span data-icon="rocket"></span>Torneo</li>
+          <li ng-click="menu.F_cambiarOrden(1)" ng-class="{ 'activo' : menu.N_orden == 1 }"><span data-icon="self-timer"></span>Practica</li>
+        </ul>
+        <ul>
+          <li><a href="#/ad" ng-click="menu.B_mostrar = false" data-icon="info"></a><a href="#/c" ng-click="menu.B_mostrar = false" data-icon="settings"></a><a href="#/a" ng-click="menu.B_mostrar = false" data-icon="help"></a></li>
+        </ul>
+      </menu>
+    </div>
+    <article ng-view></article>
+    <!-- Inicio template-->
+    <script id="i" type="text/ng-template"></script>
+    <script id="w1" type="javascript/worker">/* global indexedDB */
+
+/**
+ * {
+ *	0orden:['get, set']
+ *	1llave
+ *	2tabla
+ *	3dato
+ * }
+ * @param {type} e 
+ * @returns {undefined}
+ */
+var datos;
+onmessage = function (e) {
+//PUBLIC
+	//console.log('idb worker', e.data[0]);
+	switch(e.data[0]){
+		case 'open':
+			console.log(location.host, location.pathname);
+			importScripts('../../preguntas.js');
+			datos = preguntas();
+			console.log("Datos: ", datos);
+			break;
+		case 'get':
+			var llave = e.data[1], tabla = e.data[2];
+			request.onerror = function (event) {
+				console.error('idb.get:onerror', event);
+				postMessage(undefined);
+				event = null;
+			};
+			request.onsuccess = function (event) {
+//					console.log(
+//						'idb.get db',
+//						llave,
+//						event.target.result,
+//						tabla
+//					);
+				var resultado = undefined;
+				if(event.target.result !== undefined)
+					resultado = event.target.result.dato;
+				if(e.data[3] !== undefined) postMessage([resultado, e.data[3]]);
+				else postMessage(resultado);
+				resultado = null;
+				event = null;
+			};
+			llave = null;
+			tabla = null;
+			break;
+		case 'set':
+			var llave = e.data[1], tabla = e.data[2], dato = e.data[3];
+			var request = db.transaction([tabla], "readwrite")
+			.objectStore(tabla).put({
+				"dato": dato,
+				"id": llave
+			});
+			request.onsuccess = function () {
+				console.log("idb.set OK", llave, tabla);
+			};
+			request.onerror = function (e) {
+				console.error("idb.set:request.onerror",e);
+			};
+			llave = null;
+			tabla = null;
+			dato = null;
+			break;
+		e = null;
+	}
+};
+    </script>
+  </body>
+  <script src="js/libs/angular.js"></script>
+  <script src="js/libs/angular-route.js"></script>
+  <script src="js/libs/angular-animate.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/vista/vnavegacion.js"></script>
+  <script src="js/vista/vinicio.js"></script>
+</html>

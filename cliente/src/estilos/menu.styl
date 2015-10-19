@@ -1,0 +1,78 @@
+menu
+	position absolute
+	top 3.5rem
+	height calc( 100vh - 6.5rem )
+	width 100%
+	z-index 100
+	background-color #333
+	color white
+	margin 0
+	padding 0
+
+
+	&.claro
+		background-color #e0e0e8
+		color #333
+		a
+			color #333
+		li.activo a
+			color white
+		.iconSVG
+			fill #333
+	h2
+		margin 0.3rem 1rem
+	ul
+		margin 0
+		padding 0
+		li
+			list-style-type none
+			position relative
+			display block
+			padding 0.8rem 4rem
+			color white
+			text-decoration none
+
+			span
+			svg
+				position absolute
+				top 0.3rem
+				left 1.5rem
+				height 2em
+				width 2em
+				.iconSVG
+					fill white
+				&:before
+					font-size 2em
+
+			&.activo
+				background-color $blue
+		&:last-child
+			position absolute
+			bottom 0
+			border-top: thin solid #bbb
+			li
+				padding 0
+				padding-bottom 0.8rem
+
+				a
+					position static
+					color white
+					width 33.2vw
+					padding 0.55rem 0rem
+					text-align center
+					text-decoration none
+					display inline-block
+					&:visited
+						color inherit
+
+	&.ng-hide
+		top -90vh
+	&.ng-hide-add, &.ng-hide-remove
+		transition all linear 0.3s
+
+@import "../../bower_components/building-blocks/style/progress_activity.css"
+progress
+	position absolute
+	top 3.5rem
+	left 0
+	z-index 80

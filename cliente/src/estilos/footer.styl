@@ -1,0 +1,47 @@
+footer
+	bottom 0px
+	background-color rgba(0,0,0,0.5)
+	min-height 3rem
+
+	&.opaco
+		background-color black
+		transition all linear 0.5s
+
+	button
+		padding 0.5rem calc( 10vw - 1rem )
+		width 20vw
+		height 3rem
+		border-radius 0
+
+		&[data-icon]:before
+		.iconSVG
+			line-height 1
+			width 2rem
+			font-size 2rem
+			color white
+			margin-left -3px//fixing some auto margin
+			fill white
+
+		&.centrado
+			position absolute
+			left calc( 50% - 10vw )
+
+		&.activo
+			border-bottom medium solid $blue
+			&:before
+			.iconSVG
+				fill $blue
+				color $blue
+	.right
+		float right
+	.btns-list
+		display inline-block
+
+@import "../../bower_components/building-blocks/style/status.css"
+
+section[role="status"]
+	bottom 3rem
+	opacity 0
+	transition all linear 0.5s
+	&.activo
+		opacity 1 !important

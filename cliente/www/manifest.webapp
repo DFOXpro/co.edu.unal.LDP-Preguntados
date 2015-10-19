@@ -1,0 +1,28 @@
+{
+  "name": "Preguntados <Lenguajes de programación>",
+  "description": "",
+  "default_locale": "es",
+  "launch_path": "/index.html",
+  "type": "privileged",
+  "icons": {
+    "32": "/img/32.png",
+    "60": "/img/60.png",
+    "64": "/img/64.png",
+    "90": "/img/90.png",
+    "120": "/img/120.png",
+    "128": "/img/128.png",
+    "256": "/img/256.png"
+  },
+  "developer": {
+    "name": "Daniel Zorro"
+  },
+  "locales": {
+    "es": {
+      "description": ""
+    },
+    "en": {
+      "description": ""
+    }
+  },
+  "version": "0.0.1"
+}

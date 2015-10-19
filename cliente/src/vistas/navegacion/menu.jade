@@ -1,0 +1,35 @@
+menu.ng-hide(
+	ng-show="menu.B_mostrar"
+)
+	// h2 Short by
+	ul
+		li(
+			ng-click="menu.F_cambiarOrden(0)"
+			ng-class="{ 'activo' : menu.N_orden == 0 }"
+		)
+			span(data-icon='rocket')
+			| Torneo
+		li(
+			ng-click="menu.F_cambiarOrden(1)"
+			ng-class="{ 'activo' : menu.N_orden == 1 }"
+		)
+			span(data-icon='self-timer')
+			| Practica
+
+	ul
+		li
+			a(
+				href="#/ad"
+				ng-click="menu.B_mostrar = false"
+				data-icon='info'
+			)
+			a(
+				href="#/c"
+				ng-click="menu.B_mostrar = false"
+				data-icon='settings'
+			)
+			a(
+				href="#/a"
+				ng-click="menu.B_mostrar = false"
+				data-icon='help'
+			)

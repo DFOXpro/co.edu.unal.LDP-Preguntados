@@ -1,0 +1,23 @@
+header
+	button#menu.left.ng-hide(
+		ng-show="header.B_menu"
+		data-icon="menu"
+		ng-click="menu.B_mostrar = !menu.B_mostrar"
+		ng-class="{ 'activo' : menu.B_mostrar }"
+	)
+	button#atras.left.ng-hide(
+		ng-show="header.B_atras"
+		data-icon='back'
+		ng-click="header.F_atras()"
+	)
+
+	#titulo(
+		ng-hide="header.B_buscar"
+	) {{header.S_titulo}}
+
+progress(
+	ng-show="progreso.B_mostrar"
+	value="{{progreso.N_valor}}"
+	max="100"
+	ng-class="{ 'pack-activity' : progreso.N_valor == -1 }"
+)

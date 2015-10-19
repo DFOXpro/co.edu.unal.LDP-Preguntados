@@ -1,0 +1,71 @@
+//Colors
+
+$blue = #00CAF2
+$moradoClaro = #b8a8fe
+$morado = #305
+$moradoOscuro = #036
+
+
+
+@font-face
+	font-family 'Fira-Regular'
+	font-style normal
+	font-weight 400
+	src: local('FiraSans-Regular'), url(fonts/FiraSans-Regular.woff) format('woff')
+
+@font-face 
+	font-family 'Fira-Medium'
+	font-style normal
+	font-weight 700;
+	src local('FiraSans-Medium'), url(fonts/FiraSans-Medium.woff) format('woff')
+
+@import "../../bower_components/gaia-icons/gaia-icons.css"
+
+
+*
+	box-sizing border-box
+	outline 0
+html
+	font-size 12px
+body
+	font-family Fira-Regular
+	background-color black
+	color white
+	margin 0
+	padding 0
+
+header
+footer
+	position fixed
+	right 0px
+	left 0px
+	border none
+	z-index 101
+	display inline-block
+
+	button
+		background none
+		border none
+		vertical-align top //because random v-aling
+		svg
+			height 2rem
+			width auto
+			display inline-block
+		.iconSVG
+			fill white
+
+#container
+	position fixed
+	top 3.5rem
+	bottom 0
+	left 0
+	right 0
+	overflow-y scroll
+
+.ng-hide
+	display none !important
+
+
+@import "header"
+@import "menu"
+@import "footer"S
